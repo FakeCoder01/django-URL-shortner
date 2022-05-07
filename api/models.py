@@ -9,11 +9,17 @@ class links(models.Model):
     api_key = models.CharField(max_length=10, blank=True)
     created_on = models.DateTimeField()
 
+    def __str__(self) :
+        return self.lid
 
 #in-development
 class authTokens(models.Model):
     email = models.EmailField(max_length=100)
+    psw = models.CharField(max_length=10)
     otp = models.IntegerField(max_length=6)
-    verified = models.BooleanField()
     api_key = models.CharField(max_length=10, blank=True)
     status = models.CharField(max_length=8, blank=True)
+    created_on = models.DateTimeField()
+
+    def __str__(self) :
+        return self.email
