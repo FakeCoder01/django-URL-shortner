@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,40 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style type="text/css">
-      body{margin-top:20px;}
-      .form-control:not(textarea) {
-          height: 44px;
-      }
-      .form-control {
-          padding: 0 18px 3px;
-          border: 1px solid #dbe2e8;
-          border-radius: 22px;
-          background-color: #fff;
-          color: #606975;
-          font-family: "Maven Pro",Helvetica,Arial,sans-serif;
-          font-size: 14px;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-      }
-      .form-group label {
-          margin-bottom: 8px;
-          padding-left: 18px;
-          font-size: 13px;
-          font-weight: 500;
-          cursor: pointer;
-      }
-      .form-text {
-          padding-left: 18px;
-      }
-      .text-muted {
-          color: #9da9b9 !important;
-      }
-      #lid{
-        background-color: azure;
-      }
-    </style>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
 <body>
 <div class="container padding-bottom-3x mb-2">
@@ -57,7 +25,8 @@
                 <label for="link">Enter your long url</label>
                 <input class="form-control" type="text" id="link" name="link" placeholder="Enter here." required><small class="form-text text-muted">Link..</small>
               </div>
-              <div class="form-control" id="lid"></div>
+              <input class="form-control" type="text" id="lid" disabled><small class="form-text text-muted">Shoten URL..</small>
+              
             </div>
 
             <div class="card-footer">
@@ -74,28 +43,11 @@
   </div>
   
 
+  <h2 class="text-center"><a href="/acc/user">API HOME</a></h2>
+
 </body>
-  <script type="text/javascript">
-
-    function shortURL(){
-      link = document.getElementById("link").value;
-      $.ajax({
-        type: "POST",
-        url: "/api/short/",
-        data: {
-          'link' : link,
-          'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
-        },
-        success: function(msg){
-          response = JSON.parse(msg);
-          document.getElementById("lid").innerText = response['surl'];
-        }
-      });
-    }
-
-  </script>
+<script src="{% static '/js/script.js' %}"></script>
 </html>
-
 
 
 
