@@ -20,6 +20,10 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('<str:lid>/', views.shoot_out, name='shoot_out'),
-    path('api/short/', include('api.urls'), name='short'),
-    path('', views.index, name='index')
+    path('api/v1/', include('api.urls'), name='short'),
+    path('acc/user/', views.account, name='login'),
+    path('', views.index, name='index'),
+    path('acc/logout/', views.logout, name='logout'),
+    path('acc/otp/', views.otp, name='otp'),
+    path('acc/regAPI/', views.regAPI, name='regAPI'),
 ]
